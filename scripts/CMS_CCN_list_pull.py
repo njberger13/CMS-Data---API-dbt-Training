@@ -13,11 +13,17 @@ while True:
         "offset": offset
     }
 
+    # send HTTP GET request to API
     response = requests.get(url, params=params)
+    
+    # checks whether API request was successful (200 - successful, 400, 401, etc. are responses)
+    # if response is 400+ (errors) then stops execution
     response.raise_for_status()
 
+    # converts response to JSON. this will error if JSON is not the correct data type response
     batch = response.json()
 
+    # if the batch retreived is empty (no records remaining), then exit
     if not batch:
         break
 
@@ -27,6 +33,7 @@ while True:
 
     offset += len(batch)
 
+    # if the most recent batch was less than the batch size, it is the last one and can end the loop
     if len(batch) < batch_size:
         break
 
