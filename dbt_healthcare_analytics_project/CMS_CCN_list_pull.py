@@ -1,9 +1,9 @@
 import requests
 
-url = "https://data.cms.gov/data-api/v1/dataset/690ddc6c-2767-4618-b277-420ffb2bf27c/data"
+url = "https://data.cms.gov/data-api/v1/dataset/8ba0f9b4-9493-4aa0-9f82-44ea9468d1b5/data"
 
 batch_size = 5000
-offset = 130000
+offset = 0
 all_records = []
 
 while True:
@@ -31,3 +31,6 @@ while True:
         break
 
 print(f"\nCOMPLETE: Retrieved {len(all_records)} records.")
+
+for record in all_records[:1]:
+    print(record)
