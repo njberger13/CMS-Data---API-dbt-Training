@@ -1,0 +1,7 @@
+version: 2 #uses dbt's current YAML config format
+
+sources:
+  - name: cms_raw #this will be used in dbt
+    schema: raw #postgres schema
+    tables:
+      - name: pos_qies #the postgres table
