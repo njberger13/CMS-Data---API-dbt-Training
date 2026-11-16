@@ -88,7 +88,7 @@ def load_pos_qies(records):
             """).bindparams(
                 bindparam("data", type_=JSONB)
                 ),
-            [{"data": record} for record in records[0:100]]
+            [{"data": record} for record in records[0:1000]] #only testing a subset of the data for now
         )
 
     print(f"Successfully loaded {len(records)} records.")
