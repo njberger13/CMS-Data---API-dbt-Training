@@ -28,5 +28,29 @@ models:
                   'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY',
                   'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
                   'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV',
-                  'WI', 'WY'
+                  'WI', 'WY', 'DC', 'GU', 'PR', 'VI', 'MP', 'CN', 'MX', 'AS' #DC, guam, puerto rico, virgin islands, northern mariana, canada, mexico, american samoa
                 ]
+
+  - name: stg_cost_reports
+    columns:
+      - name: provider_ccn
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_pos_qies')
+                field: provider_number
+              severity: warn
+
+      - name: id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: fiscal_year_begin
+        data_tests:
+          - not_null
+
+      - name: fiscal_year_end
+        data_tests:
+          - not_null
