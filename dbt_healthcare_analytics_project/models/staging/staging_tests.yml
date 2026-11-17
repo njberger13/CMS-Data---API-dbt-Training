@@ -40,7 +40,8 @@ models:
               arguments:
                 to: ref('stg_pos_qies')
                 field: provider_number
-              severity: warn
+              config:
+                severity: warn
 
       - name: id
         data_tests:
