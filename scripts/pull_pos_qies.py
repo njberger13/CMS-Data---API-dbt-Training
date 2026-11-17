@@ -88,7 +88,7 @@ def load_pos_qies(records):
             """).bindparams(
                 bindparam("data", type_=JSONB)
                 ),
-            [{"data": record} for record in records[0:1000]] #only testing a subset of the data for now
+            [{"data": record} for record in records] #[0:1000]] #only testing a subset of the data for now
         )
 
     print(f"Successfully loaded {len(records)} records.")
@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     start_time = time.perf_counter()
 
-    print("Starting CMS data extraction...", flush=True)
+    print("Starting CMS data extraction for POS QIES...", flush=True)
     records = extract_pos_qies()
 
     extraction_time = time.perf_counter() - start_time
